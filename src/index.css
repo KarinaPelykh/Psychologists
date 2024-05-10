@@ -1,4 +1,14 @@
-:root {
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "node_modules/modern-normalize/modern-normalize.css";
+@layer base {
+  html {
+    font-family: "Inter", sans-serif;
+  }
+  body {
+    min-width: 100vw;
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom right, #fbfbfb, #fc832c3c);
+  }
 }

@@ -17,3 +17,11 @@
     height: auto;
   }
 }
+
+.login {
+  background-color: transparent;
+
+  border-radius: 30px;
+  padding: 14px 39px 14px 39px;
+  margin-right: 8px;
+}

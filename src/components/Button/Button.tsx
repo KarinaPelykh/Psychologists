@@ -5,11 +5,14 @@ type Prop = {
   prop: string;
   className?: string;
   iconShow?: boolean;
+  onClick: () => void;
 };
 
-export const Button = ({ prop, className, iconShow = true }: Prop) => {
+export const Button = ({ prop, className, iconShow = true, onClick }: Prop) => {
   return (
     <button
+      onClick={onClick}
+      type="submit"
       className={clsx(
         className,
         "bg-[#FC832C] py-[18px] px-[50px] rounded-[30px]  text-white flex  text-xl"

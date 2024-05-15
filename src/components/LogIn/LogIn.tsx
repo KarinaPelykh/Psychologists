@@ -3,6 +3,7 @@ import icon from "../../images/sprite.svg";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useState } from "react";
 type Prop = {
   toggle: () => void;
 };
@@ -24,6 +25,8 @@ const schema = yup
   })
   .required();
 export const LogIn = ({ toggle }: Prop) => {
+  const [show, setShow] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -38,6 +41,10 @@ export const LogIn = ({ toggle }: Prop) => {
     setTimeout(() => {
       toggle();
     }, 200);
+  };
+
+  const handelIsShow = () => {
+    setShow(!show);
   };
   return (
     <div className="bg-[#FBFBFB] p-[64px] w-[566px] h-[510px]  rounded-[30px] relative">
@@ -54,21 +61,37 @@ export const LogIn = ({ toggle }: Prop) => {
           Welcome back!Please enter your credentials to access your account and
           continue your search for a psychologist.
         </p>
-        <div className="flex flex-col mb-[40px]">
+        <div className="flex flex-col mb-[40px] relative">
           <input
-            className="w-[100%] h-[52px]  py-[16px] px-[18px] border rounded-[12px] placeholder:text-[#000] mb-[18px]"
+            className=" outline-0 w-[100%] h-[52px]  py-[16px] px-[18px] border rounded-[12px] placeholder:text-[#000] mb-[18px]"
             {...register("email")}
             name="email"
             placeholder="Email"
           />
-          <p>{errors.email?.message}</p>
-          <input
-            className="w-[100%]  h-[52px]  py-[16px] px-[18px] border rounded-[12px] placeholder:text-[#000]"
-            {...register("password")}
-            name="password"
-            placeholder="Password"
-          />
-          <p>{errors.password?.message}</p>
+          <p className="absolute top-[52px] italic text-[10px]">
+            {errors.email?.message}
+          </p>
+          <div className="relative">
+            <input
+              type={show ? "text" : "password"}
+              className="outline-0 w-[100%]  h-[52px]  py-[16px] px-[18px] border rounded-[12px] placeholder:text-[#000]"
+              {...register("password")}
+              name="password"
+              placeholder="Password"
+            />
+            <button
+              onClick={handelIsShow}
+              className="absolute top-[17px] right-[20px]"
+            >
+              <svg className="w-[18px] h-[18px] ">
+                <use xlinkHref={icon + (show ? "#eye" : "#eye-blocked")}></use>
+              </svg>
+            </button>
+          </div>
+
+          <p className="absolute top-[122px] italic text-[10px]">
+            {errors.password?.message}
+          </p>
         </div>
         <Button
           iconShow={false}

@@ -3,11 +3,14 @@ import icon from "../../images/sprite.svg";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { registerThunk } from "../../redux/Auth/AuthOperation";
 type Prop = {
   toggle: () => void;
 };
 
-type User = {
+export type User = {
   name: string;
   email: string;
   password: string;
@@ -27,6 +30,8 @@ const schema = yup
   .required();
 
 export const Registration = ({ toggle }: Prop) => {
+  const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -35,14 +40,16 @@ export const Registration = ({ toggle }: Prop) => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmit = (data: User) => {
-    console.log(data);
-    reset();
-    setTimeout(() => {
-      toggle();
-    }, 200);
-  };
+  const onSubmit = ({ name, email, password }: User) => {
+    console.log({ name, email, password });
 
+    dispatch(registerThunk({ name, email, password }));
+    reset();
+    toggle();
+  };
+  const handelShow = () => {
+    setShow(!show);
+  };
   return (
     <div className="bg-[#FBFBFB] p-[64px] w-[566px] h-[580px]  rounded-[30px] relative">
       <button className="absolute top-[15px] right-[15px]" onClick={toggle}>
@@ -59,28 +66,46 @@ export const Registration = ({ toggle }: Prop) => {
           need some information. Please provide us with the following
           information.
         </p>
-        <div className="flex flex-col mb-[40px]">
+        <div className="flex flex-col mb-[40px] relative">
           <input
-            className="w-[100%] h-[52px]  py-[16px] px-[18px] border rounded-[12px] placeholder:text-[#000] mb-[18px]"
+            className=" outline-0 w-[100%] h-[52px]  py-[16px] px-[18px] border rounded-[12px] placeholder:text-[#000] mb-[18px]"
             {...register("name")}
             name="name"
             placeholder="Name"
           />
-          <p>{errors.name?.message}</p>
+          <p className="absolute top-[52px] italic text-[10px]">
+            {errors.name?.message}
+          </p>
           <input
-            className="w-[100%] h-[52px]  py-[16px] px-[18px] border rounded-[12px] placeholder:text-[#000] mb-[18px]"
+            className="outline-0 w-[100%] h-[52px]  py-[16px] px-[18px] border rounded-[12px] placeholder:text-[#000] mb-[18px]"
             {...register("email")}
             name="email"
             placeholder="Email"
           />
-          <p>{errors.email?.message}</p>
-          <input
-            className="w-[100%]  h-[52px]  py-[16px] px-[18px] border rounded-[12px] placeholder:text-[#000]"
-            {...register("password")}
-            name="password"
-            placeholder="Password"
-          />
-          <p>{errors.password?.message}</p>
+          <p className="absolute top-[122px] italic text-[10px]">
+            {errors.email?.message}
+          </p>
+          <div className="relative">
+            <input
+              type={show ? "text" : "password"}
+              className="outline-0 w-[100%]  h-[52px]  py-[16px] px-[18px] border rounded-[12px] placeholder:text-[#000]"
+              {...register("password")}
+              name="password"
+              placeholder="Password"
+            />
+            <button
+              onClick={handelShow}
+              className="absolute top-[17px] right-[20px]"
+            >
+              <svg className="w-[18px] h-[18px] ">
+                <use xlinkHref={icon + (show ? "#eye" : "#eye-blocked")}></use>
+              </svg>
+            </button>
+          </div>
+
+          <p className="absolute top-[191px] italic text-[10px]">
+            {errors.password?.message}
+          </p>
         </div>
         <Button
           iconShow={false}

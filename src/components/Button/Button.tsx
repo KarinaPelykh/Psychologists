@@ -15,7 +15,8 @@ export const Button = ({ iconShow = true, prop, className, onClick }: Prop) => {
       type="submit"
       className={clsx(
         className,
-        "bg-[#FC832C] py-[18px] px-[50px] rounded-[30px]  text-white flex  text-xl"
+
+        "outline-0 bg-[#FC832C] py-[18px] px-[50px] rounded-[30px]  text-white flex  text-xl"
       )}
     >
       {prop}

@@ -5,10 +5,10 @@ type Prop = {
   prop: string;
   className?: string;
   iconShow?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 };
 
-export const Button = ({ prop, className, iconShow = true, onClick }: Prop) => {
+export const Button = ({ iconShow = true, prop, className, onClick }: Prop) => {
   return (
     <button
       onClick={onClick}

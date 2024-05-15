@@ -8,12 +8,14 @@ type Prop = {
 };
 
 type User = {
+  name: string;
   email: string;
   password: string;
 };
 
 const schema = yup
   .object({
+    name: yup.string().required().trim(),
     email: yup.string().email().required().trim(),
     password: yup
       .string()
@@ -23,7 +25,8 @@ const schema = yup
       .trim(),
   })
   .required();
-export const LogIn = ({ toggle }: Prop) => {
+
+export const Registration = ({ toggle }: Prop) => {
   const {
     register,
     handleSubmit,
@@ -39,8 +42,9 @@ export const LogIn = ({ toggle }: Prop) => {
       toggle();
     }, 200);
   };
+
   return (
-    <div className="bg-[#FBFBFB] p-[64px] w-[566px] h-[510px]  rounded-[30px] relative">
+    <div className="bg-[#FBFBFB] p-[64px] w-[566px] h-[580px]  rounded-[30px] relative">
       <button className="absolute top-[15px] right-[15px]" onClick={toggle}>
         <svg className="w-[32px] h-[32px]  stroke-black">
           <use xlinkHref={icon + "#close"}></use>
@@ -48,13 +52,21 @@ export const LogIn = ({ toggle }: Prop) => {
       </button>
       <form onSubmit={handleSubmit(onSubmit)}>
         <h1 className=" text-[40px] font-medium tracking-[0.02rem] leading-[1.2] mb-[20px]">
-          Log In
+          Registration
         </h1>
         <p className="w-[408px] font-normal text-base leading-[1.25] text-[#191a158a] mb-[40px]">
-          Welcome back!Please enter your credentials to access your account and
-          continue your search for a psychologist.
+          Thank you for your interest in our platform! In order to register, we
+          need some information. Please provide us with the following
+          information.
         </p>
         <div className="flex flex-col mb-[40px]">
+          <input
+            className="w-[100%] h-[52px]  py-[16px] px-[18px] border rounded-[12px] placeholder:text-[#000] mb-[18px]"
+            {...register("name")}
+            name="name"
+            placeholder="Name"
+          />
+          <p>{errors.name?.message}</p>
           <input
             className="w-[100%] h-[52px]  py-[16px] px-[18px] border rounded-[12px] placeholder:text-[#000] mb-[18px]"
             {...register("email")}
@@ -72,7 +84,7 @@ export const LogIn = ({ toggle }: Prop) => {
         </div>
         <Button
           iconShow={false}
-          prop="Log In"
+          prop="Sign Up"
           className=" !w-[100%] !bg-[#FC832C] flex justify-center !h-[52px] rounded-[30px] items-center"
         />
       </form>

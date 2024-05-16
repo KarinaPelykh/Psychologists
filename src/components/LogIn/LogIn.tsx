@@ -4,13 +4,12 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
+import { useAppDispatch } from "../../hooks/useDispatch";
+import { useNavigate } from "react-router-dom";
+import { UserLogin } from "../../type/Auth";
+import { loginThunk } from "../../redux/Auth/AuthOperation";
 type Prop = {
   toggle: () => void;
-};
-
-type User = {
-  email: string;
-  password: string;
 };
 
 const schema = yup
@@ -26,7 +25,8 @@ const schema = yup
   .required();
 export const LogIn = ({ toggle }: Prop) => {
   const [show, setShow] = useState(false);
-
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -35,12 +35,12 @@ export const LogIn = ({ toggle }: Prop) => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-  const onSubmit = (data: User) => {
-    console.log(data);
+  const onSubmit = ({ email, password }: UserLogin) => {
+    dispatch(loginThunk({ email, password }))
+      .unwrap()
+      .then(() => navigate("/psychologists"));
     reset();
-    setTimeout(() => {
-      toggle();
-    }, 200);
+    toggle();
   };
 
   const handelIsShow = () => {
@@ -80,6 +80,7 @@ export const LogIn = ({ toggle }: Prop) => {
               placeholder="Password"
             />
             <button
+              type="button"
               onClick={handelIsShow}
               className="absolute top-[17px] right-[20px]"
             >

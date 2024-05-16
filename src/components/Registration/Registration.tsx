@@ -4,18 +4,14 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../../hooks/useDispatch";
 import { registerThunk } from "../../redux/Auth/AuthOperation";
+import { User } from "../../type/Auth";
+import { useNavigate } from "react-router-dom";
+
 type Prop = {
   toggle: () => void;
 };
-
-export type User = {
-  name: string;
-  email: string;
-  password: string;
-};
-
 const schema = yup
   .object({
     name: yup.string().required().trim(),
@@ -31,7 +27,12 @@ const schema = yup
 
 export const Registration = ({ toggle }: Prop) => {
   const [show, setShow] = useState(false);
-  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
+
+  const handelShow = () => {
+    setShow(!show);
+  };
   const {
     register,
     handleSubmit,
@@ -41,15 +42,13 @@ export const Registration = ({ toggle }: Prop) => {
     resolver: yupResolver(schema),
   });
   const onSubmit = ({ name, email, password }: User) => {
-    console.log({ name, email, password });
-
-    dispatch(registerThunk({ name, email, password }));
+    dispatch(registerThunk({ name, email, password }))
+      .unwrap()
+      .then(() => navigate("/psychologists"));
     reset();
     toggle();
   };
-  const handelShow = () => {
-    setShow(!show);
-  };
+
   return (
     <div className="bg-[#FBFBFB] p-[64px] w-[566px] h-[580px]  rounded-[30px] relative">
       <button className="absolute top-[15px] right-[15px]" onClick={toggle}>
@@ -94,6 +93,7 @@ export const Registration = ({ toggle }: Prop) => {
               placeholder="Password"
             />
             <button
+              type="button"
               onClick={handelShow}
               className="absolute top-[17px] right-[20px]"
             >

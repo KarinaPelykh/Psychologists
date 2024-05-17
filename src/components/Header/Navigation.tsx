@@ -4,7 +4,7 @@ export const Navigation = () => {
   const routes = [
     { name: "Home", id: "7" },
     { path: "/psychologists", name: "Psychologists", id: "2" },
-    // { path: "/favorites", name: "Favorites", id: "1" },
+    { path: "/favorites", name: "Favorites", id: "1" },
   ];
 
   return (

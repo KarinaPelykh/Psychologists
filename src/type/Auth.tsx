@@ -10,6 +10,7 @@ export type UserResponse = {
   id: string;
   email: string;
   name: string;
+  token: string;
 };
 
 export type UserLogin = {
@@ -23,7 +24,7 @@ export interface State {
       name: string;
       email: string;
     };
-    token: null;
+    token: string;
     isLoading: boolean;
     isLogin: boolean;
   };

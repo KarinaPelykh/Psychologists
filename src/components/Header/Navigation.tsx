@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import clsx from "clsx";
+import { NavLink } from "react-router-dom";
 
 export const Navigation = () => {
   const routes = [
@@ -10,8 +11,20 @@ export const Navigation = () => {
   return (
     <ul className="flex">
       {routes.map(({ path, name, id }) => (
-        <li key={id} className="mr-[40px]">
-          <Link to={path ? path : ""}>{name}</Link>
+        <li key={id} className="mr-[40px] relative">
+          <NavLink
+            className={({ isActive }) =>
+              clsx(
+                "",
+                isActive
+                  ? "after:bg-[#FC832C]  after:w-[8px] after:h-[8px] after:absolute after:rounded-[100%] after:block after:right-[50%] after:left-[50%]"
+                  : ""
+              )
+            }
+            to={path ? path : ""}
+          >
+            {name}
+          </NavLink>
         </li>
       ))}
     </ul>

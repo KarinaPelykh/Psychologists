@@ -13,6 +13,7 @@ export const Modal = ({ isOpen, toggle, type }: Modal) => {
     const handelClose = (e: KeyboardEvent) => {
       if (e.code === "Escape") {
         toggle();
+        console.log(toggle());
       }
     };
     document.addEventListener("keydown", handelClose);
@@ -26,6 +27,7 @@ export const Modal = ({ isOpen, toggle, type }: Modal) => {
       toggle();
     }
   };
+
   return (
     <>
       {isOpen && (

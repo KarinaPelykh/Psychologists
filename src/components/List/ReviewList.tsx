@@ -2,15 +2,19 @@ import { useState } from "react";
 import { Button } from "../Button/Button";
 import { ReviewItem } from "./ReviewItem";
 import { Psychology, Reviews } from "../../type/Psycholog";
+import { useToggle } from "../../hooks/useToggle";
+import { ModalWindow } from "../ModalWindow";
 interface Item {
   item: Psychology;
 }
 
 export const ReviewList = ({ item }: Item) => {
   const [visible, setVisible] = useState(false);
+  const { isOpen, toggle } = useToggle();
   const handelVisible = () => {
     setVisible(!visible);
   };
+
   return (
     <>
       {visible ? (
@@ -29,6 +33,7 @@ export const ReviewList = ({ item }: Item) => {
             iconShow={false}
             prop="Make an appointment"
             className="mt-[40px]"
+            onClick={toggle}
           />
         </ul>
       ) : (
@@ -36,6 +41,7 @@ export const ReviewList = ({ item }: Item) => {
           Read more
         </button>
       )}
+      <ModalWindow isOpen={isOpen} item={item} toggle={toggle} />
     </>
   );
 };

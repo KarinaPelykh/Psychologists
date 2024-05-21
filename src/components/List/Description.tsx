@@ -11,7 +11,7 @@ export const Description = ({ item }: Item) => {
         <svg className="w-[16px] h-[16px]  absolute top-[5px] left-[-20px]">
           <use xlinkHref={icon + "#icon-star"}></use>
         </svg>
-        <p className="font-medium">Rating{item.rating}</p>
+        <p className="font-medium">Rating {item.rating}</p>
         <div className="h-[16px] border borded-[#191A15] mr-[16px] ml-[16px] flex items-center"></div>
         <p className="font-medium">
           Price / 1 hour{" "}

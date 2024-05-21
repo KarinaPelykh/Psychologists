@@ -17,7 +17,21 @@
     height: auto;
   }
 }
-
+.custom-select__control {
+  @apply !bg-transparent !border-none !outline-none !shadow-none !w-[226px] !h-[48px] !rounded-[14px] !bg-[#FC832C] !text-[#fff]  !text-start;
+}
+.custom-select__indicator-separator {
+  @apply !hidden;
+}
+.custom-select__menu {
+  @apply !bg-[#fff] !border-none !outline-none  !w-[226px] !h-[auto] !rounded-[14px] !text-[#8A8A89];
+}
+.custom-option:active {
+  @apply !bg-transparent  !text-[#000];
+}
+.custom-option:hover {
+  @apply !bg-transparent;
+}
 .login {
   background-color: transparent;
 

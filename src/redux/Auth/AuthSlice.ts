@@ -17,6 +17,7 @@ export const AuthSlice = createSlice({
     saveUser: (state, { payload }) => {
       state.user = payload.user;
       state.token = payload.token;
+      state.isLogin = true;
     },
   },
   extraReducers: (builder) => {

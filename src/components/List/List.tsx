@@ -11,7 +11,16 @@ export const List = () => {
   const [data, setData] = useState<Psychology[]>([]);
   const [limit, setLimit] = useState<number>(3);
   const [option, setOptions] = useState("Popular");
-  console.log(option);
+  const [visible, setVisible] = useState([]);
+  const [favorite, setFavorite] = useState([]);
+  const handeladdFavorte = (item, index) => {
+    setFavorite((prev) => {
+      const res = prev.filter((fan) => fan !== item);
+      return [...res, item];
+    });
+    setVisible(visible === index ? null : index);
+  };
+  console.log(favorite);
 
   const handelValue = (e: SingleValue<Opportunity>) => {
     if (e) {
@@ -55,11 +64,19 @@ export const List = () => {
   return (
     <>
       <Filter option={option} handelValue={handelValue} />
+
       <ul className="mr-[128px] ml-[128px] ">
         {info?.map((item: Psychology, index: number) => (
-          <ItemList key={index} item={item} />
+          <ItemList
+            key={index}
+            item={item}
+            handeladdFavorte={handeladdFavorte}
+            index={index}
+            visible={visible}
+          />
         ))}
       </ul>
+
       <Button
         iconShow={false}
         prop="Load more"

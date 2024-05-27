@@ -6,8 +6,10 @@ import { ReviewList } from "./ReviewList";
 
 interface Item {
   item: Psychology;
+  handeladdFavorte: () => void;
+  index: number;
 }
-export const ItemList = ({ item }: Item) => {
+export const ItemList = ({ item, handeladdFavorte, index, visible }: Item) => {
   return (
     <li className="  flex h-[auto] w-[auto] p-[24px] bg-[#FBFBFB] rounded-[24px] mt-[32px] last:mb-[64px]">
       <div className="p-[12px] border border-[#fc832c96] w-[120px] h-[120px] rounded-[15px] relative">
@@ -22,7 +24,12 @@ export const ItemList = ({ item }: Item) => {
       </div>
 
       <div className="w-[992px] ml-[24px]">
-        <Description item={item} />
+        <Description
+          item={item}
+          handeladdFavorte={handeladdFavorte}
+          index={index}
+          visible={visible}
+        />
         <div>
           <p className="text-[24px] font-medium mb-[24px]">{item.name}</p>
           <InfoAboutPsycholog item={item} />
@@ -31,27 +38,6 @@ export const ItemList = ({ item }: Item) => {
         <p className="font-normal text-base leading-[1.25 ] text-[#191a1580]">
           {item.about}
         </p>
-        {/* {visible ? (
-          <ul>
-            {item.reviews?.map(({ reviewer, comment, rating }, index) => (
-              <Review
-                key={index}
-                reviewer={reviewer}
-                comment={comment}
-                rating={rating}
-              />
-            ))}
-            <Button
-              iconShow={false}
-              prop="Make an appointment"
-              className="mt-[40px]"
-            />
-          </ul>
-        ) : (
-          <button onClick={handelVisible} className=" text-[#000] underline">
-            Read more
-          </button>
-        )} */}
 
         <ReviewList item={item} />
       </div>

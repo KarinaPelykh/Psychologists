@@ -1,3 +1,4 @@
-import { State } from "../../type/Auth";
+import { StatePsychology } from "../../type/Psycholog";
 
-export const psychologySelector = (state: State) => state.psychology.psychology;
+export const psychologySelector = (state: { psychology: StatePsychology }) =>
+  state.psychology.psychology;

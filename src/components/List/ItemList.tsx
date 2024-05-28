@@ -6,10 +6,12 @@ import { ReviewList } from "./ReviewList";
 
 interface Item {
   item: Psychology;
-  handeladdFavorte: () => void;
   index: number;
 }
-export const ItemList = ({ item, handeladdFavorte, index, visible }: Item) => {
+export const ItemList = ({
+  item,
+  index,
+}: Item) => {
   return (
     <li className="  flex h-[auto] w-[auto] p-[24px] bg-[#FBFBFB] rounded-[24px] mt-[32px] last:mb-[64px]">
       <div className="p-[12px] border border-[#fc832c96] w-[120px] h-[120px] rounded-[15px] relative">
@@ -26,9 +28,7 @@ export const ItemList = ({ item, handeladdFavorte, index, visible }: Item) => {
       <div className="w-[992px] ml-[24px]">
         <Description
           item={item}
-          handeladdFavorte={handeladdFavorte}
           index={index}
-          visible={visible}
         />
         <div>
           <p className="text-[24px] font-medium mb-[24px]">{item.name}</p>

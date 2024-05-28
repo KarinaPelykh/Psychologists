@@ -21,3 +21,8 @@ export interface Reviews {
   comment: string;
   rating: number;
 }
+
+export interface StatePsychology {
+  psychology: Psychology[];
+  active: boolean;
+}

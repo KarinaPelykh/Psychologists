@@ -39,3 +39,8 @@
   padding: 14px 39px 14px 39px;
   margin-right: 8px;
 }
+
+.active {
+  fill: #fc832c;
+  stroke: #fc832c;
+}

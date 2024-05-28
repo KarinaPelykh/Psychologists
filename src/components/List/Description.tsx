@@ -1,18 +1,32 @@
+import { useState } from "react";
+import { useFavorite } from "../Context/useContext";
 import icon from "../../images/sprite.svg";
 import { Psychology } from "../../type/Psycholog";
 import clsx from "clsx";
+import { useLocation } from "react-router-dom";
 interface Item {
   item: Psychology;
-  handeladdFavorte: () => void;
-  active: boolean;
   index: number;
 }
-export const Description = ({
-  item,
-  handeladdFavorte,
-  index,
-  visible,
-}: Item) => {
+export const Description = ({ item, index }: Item) => {
+  const { removeFavorite, addFavorite } = useFavorite();
+  const [isActive, setIsActive] = useState(false);
+  const location = useLocation();
+  const favoritePage = location.pathname === "/favorites";
+
+  const handleToggleFavorite = () => {
+    if (favoritePage) {
+      removeFavorite(item);
+    } else {
+      if (isActive) {
+        removeFavorite(item);
+      } else {
+        addFavorite(item, index);
+      }
+      setIsActive(!isActive);
+    }
+  };
+
   return (
     <div className="flex ">
       <p className="text-[#8A8A89]">Psychologist</p>
@@ -26,14 +40,16 @@ export const Description = ({
           Price / 1 hour
           <span className="text-[#38CD3E]">{item.price_per_hour}$</span>
         </p>
-        <button onClick={() => handeladdFavorte(item, index)}>
+
+        <button onClick={() => handleToggleFavorite()}>
           <svg
             className={clsx(
               "w-[26px] h-[26px] fill-[#fff]  stroke-black ml-[28px]",
-
-              visible === index
-                ? "fill-[#FC832C] stroke-[#FC832C]"
-                : " fill-[#fff]  stroke-black"
+              favoritePage
+                ? "active"
+                : isActive
+                ? "active"
+                : " fill-[#fff]  stroke-black ml-[28px]"
             )}
           >
             <use xlinkHref={icon + "#heart"}></use>

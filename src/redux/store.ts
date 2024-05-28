@@ -11,7 +11,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import { psychologyreducer } from "./Psychology/slice.ts";
+import { psychologyReducer } from "./Psychology/slice.ts";
 
 const persistConfig = {
   key: "root",
@@ -23,7 +23,7 @@ const persistedReducer = persistReducer(persistConfig, authReducer);
 export const store = configureStore({
   reducer: {
     auth: persistedReducer,
-    psychology: psychologyreducer,
+    psychology: psychologyReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

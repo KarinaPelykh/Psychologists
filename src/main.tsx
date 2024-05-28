@@ -9,12 +9,15 @@ import { Provider } from "react-redux";
 import { persistor, store } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { monitorAuthState } from "./redux/Auth/Auth";
+import { FavoriteProvider } from "./components/Context/useContext";
 monitorAuthState();
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <Provider store={store}>
       <PersistGate persistor={persistor}>
-        <RouterProvider router={routes} />
+        <FavoriteProvider>
+          <RouterProvider router={routes} />
+        </FavoriteProvider>
       </PersistGate>
     </Provider>
   </React.StrictMode>

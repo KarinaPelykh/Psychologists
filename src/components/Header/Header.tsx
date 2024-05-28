@@ -18,8 +18,8 @@ export const Header = () => {
     dispatch(LogOut());
   };
   return (
-    <header className="border py-6 px-32  ">
-      <nav className="flex items-center">
+    <header className="border tablet:py-6 tablet:px-32  ">
+      <nav className="tablet:flex items-center ">
         <Logo />
         <Navigation />
         {IsUser?.name ? (

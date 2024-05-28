@@ -15,4 +15,4 @@ export const Psychology = createSlice({
     });
   },
 });
-export const psychologyreducer = Psychology.reducer;
+export const psychologyReducer = Psychology.reducer;

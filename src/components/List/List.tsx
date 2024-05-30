@@ -34,10 +34,10 @@ export const List = () => {
   }, [option, psychology]);
 
   return (
-    <>
+    <div className="mt-[20px] desktop:mt-[64px] min-h-screen">
       <Filter option={option} handelValue={handelValue} />
 
-      <ul className="mr-[128px] ml-[128px] ">
+      <ul>
         {info?.map((item: Psychology, index: number) => (
           <ItemList key={index} item={item} index={index} />
         ))}
@@ -46,11 +46,11 @@ export const List = () => {
       <Button
         iconShow={false}
         prop="Load more"
-        className="mx-[auto] mb-[100px]"
+        className="mx-[auto] mb-[100px] mobil:flex"
         onClick={() => {
           setLimit(limit + 3);
         }}
       />
-    </>
+    </div>
   );
 };

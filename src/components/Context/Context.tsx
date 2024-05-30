@@ -1,8 +1,7 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import { Psychology } from "../../type/Psycholog";
 interface Prop {
-  children: React.ReactNode;
-  FavoriteContext: FavoriteContextType;
+  children: React.ReactElement;
 }
 
 interface FavoriteContextType {
@@ -11,22 +10,19 @@ interface FavoriteContextType {
   visible: number | null;
   removeFavorite: (item: Psychology) => void;
 }
-const FavoriteContext = createContext<FavoriteContextType | undefined>(
+export const FavoriteContext = createContext<FavoriteContextType | undefined>(
   undefined
 );
-export const useFavorite = () => {
-  const context = useContext(FavoriteContext);
-  if (!context) {
-    throw new Error("useFavorite must be used within a FavoriteProvider");
-  }
-  return context;
-};
 
 export const FavoriteProvider = ({ children }: Prop) => {
-  const [favorite, setFavorite] = useState<Psychology[]>([]);
+  const handelSaveData = () => {
+    const savedFavorite = localStorage.getItem("favorite");
+    return savedFavorite ? JSON.parse(savedFavorite) : [];
+  };
+  const [favorite, setFavorite] = useState<Psychology[]>(() =>
+    handelSaveData()
+  );
   const [visible, setVisible] = useState<number | null>(null);
-  console.log(favorite);
-  console.log(visible);
 
   const addFavorite = (item: Psychology, index: number) => {
     setFavorite((prev) => {

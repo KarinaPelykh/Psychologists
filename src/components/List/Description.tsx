@@ -1,18 +1,30 @@
 import { useState } from "react";
-import { useFavorite } from "../Context/useContext";
 import icon from "../../images/sprite.svg";
 import { Psychology } from "../../type/Psycholog";
 import clsx from "clsx";
 import { useLocation } from "react-router-dom";
+import { useFavorite } from "../../hooks/useContext";
+import { useSelector } from "react-redux";
+import { userSelector } from "../../redux/Auth/AuthSelector";
 interface Item {
   item: Psychology;
   index: number;
 }
 export const Description = ({ item, index }: Item) => {
-  const { removeFavorite, addFavorite } = useFavorite();
+  const { removeFavorite, addFavorite, favorite } = useFavorite();
   const [isActive, setIsActive] = useState(false);
   const location = useLocation();
   const favoritePage = location.pathname === "/favorites";
+  const isFavorite = favorite.some((itemFav) => itemFav.name === item.name);
+  const isLogin = useSelector(userSelector);
+
+  const hendalControl = () => {
+    if (!isLogin || isLogin.name === "") {
+      alert("Sorry,you need autorotation");
+    } else {
+      handleToggleFavorite();
+    }
+  };
 
   const handleToggleFavorite = () => {
     if (favoritePage) {
@@ -28,10 +40,12 @@ export const Description = ({ item, index }: Item) => {
   };
 
   return (
-    <div className="flex ">
-      <p className="text-[#8A8A89]">Psychologist</p>
+    <div className=" tablet:flex">
+      <p className="text-[#8A8A89] mobil:flex mobil:justify-center mobil:my-[10px] ">
+        Psychologist
+      </p>
       <div className="flex  ml-[auto] relative">
-        <svg className="w-[16px] h-[16px]  absolute top-[5px] left-[-20px]">
+        <svg className="w-[16px] h-[16px]  absolute top-[15px] left-[-25px]  tablet:top-[5px] tablet:left-[-20px]">
           <use xlinkHref={icon + "#icon-star"}></use>
         </svg>
         <p className="font-medium">Rating {item.rating}</p>
@@ -41,13 +55,13 @@ export const Description = ({ item, index }: Item) => {
           <span className="text-[#38CD3E]">{item.price_per_hour}$</span>
         </p>
 
-        <button onClick={() => handleToggleFavorite()}>
+        <button onClick={() => hendalControl()}>
           <svg
             className={clsx(
               "w-[26px] h-[26px] fill-[#fff]  stroke-black ml-[28px]",
               favoritePage
                 ? "active"
-                : isActive
+                : isActive || isFavorite
                 ? "active"
                 : " fill-[#fff]  stroke-black ml-[28px]"
             )}

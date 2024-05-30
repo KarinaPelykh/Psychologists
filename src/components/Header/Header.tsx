@@ -18,24 +18,26 @@ export const Header = () => {
     dispatch(LogOut());
   };
   return (
-    <header className="border tablet:py-6 tablet:px-32  ">
-      <nav className="tablet:flex items-center ">
-        <Logo />
-        <Navigation />
-        {IsUser?.name ? (
-          <>
-            <UserBar />
-            <Button
-              iconShow={false}
-              prop="Log out"
-              className="bg-[transparent] border !border-[#191a159e] rounded-[30px] !px-[39px] !py-[14px]  mr-[8px] !text-[#000] !h-[48px] !text-[16px] flex items-center"
-              onClick={logOut}
-            />
-          </>
-        ) : (
-          <AuthNav isOpen={isOpen} open={open} toggle={toggle} />
-        )}
-      </nav>
+    <header className="border">
+      <div className="mx-[auto]  px-[24px] py-[20px] desktop:py-[24px] desktop:px-[128px]  ">
+        <nav className="flex items-center justify-center  tablet:justify-start">
+          <Logo />
+          <Navigation />
+          {IsUser?.name ? (
+            <>
+              <UserBar />
+              <Button
+                iconShow={false}
+                prop="Log out"
+                className="bg-[transparent] border !border-[#191a159e] rounded-[30px] !px-[39px] !py-[14px]  mr-[8px] !text-[#000] !h-[48px] !text-[16px] flex items-center"
+                onClick={logOut}
+              />
+            </>
+          ) : (
+            <AuthNav isOpen={isOpen} open={open} toggle={toggle} />
+          )}
+        </nav>
+      </div>
     </header>
   );
 };

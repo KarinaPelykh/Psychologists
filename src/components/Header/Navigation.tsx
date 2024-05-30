@@ -9,7 +9,7 @@ export const Navigation = () => {
   ];
 
   return (
-    <ul className="flex">
+    <ul className=" hidden  tablet:flex">
       {routes.map(({ path, name, id }) => (
         <li key={id} className="mr-[40px] relative">
           <NavLink

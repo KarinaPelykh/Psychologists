@@ -9,7 +9,7 @@ import { Provider } from "react-redux";
 import { persistor, store } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { monitorAuthState } from "./redux/Auth/Auth";
-import { FavoriteProvider } from "./components/Context/useContext";
+import { FavoriteProvider } from "./components/Context/Context";
 monitorAuthState();
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>

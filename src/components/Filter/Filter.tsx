@@ -24,7 +24,7 @@ export const Filter = ({ option, handelValue }: Prop) => {
 
   return (
     <>
-      <p>Filters</p>
+      <p className="text-[#8A8A89]  text-lg mb-[8px]">Filters</p>
       <Select
         value={selectedOption}
         classNamePrefix={"custom-select"}

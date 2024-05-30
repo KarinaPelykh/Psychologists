@@ -1,4 +1,4 @@
-import { useFavorite } from "../Context/useContext";
+import { useFavorite } from "../../hooks/useContext";
 import { ItemList } from "../List/ItemList";
 import { Loader } from "../Loader/Loader";
 

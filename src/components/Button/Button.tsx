@@ -16,7 +16,8 @@ export const Button = ({ iconShow = true, prop, className, onClick }: Prop) => {
       className={clsx(
         className,
 
-        " outline-0 bg-[#FC832C] py-[18px] px-[50px] rounded-[30px] text-white flex  text-xl"
+        " outline-0 bg-[#FC832C] py-[18px] px-[50px] rounded-[30px] text-white flex  text-xl",
+        "hidden desktop:flex "
       )}
     >
       {prop}

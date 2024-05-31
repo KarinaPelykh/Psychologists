@@ -8,7 +8,6 @@ type Prop = {
 };
 export const PrivatePage = ({ children }: Prop) => {
   const isLogin = useSelector(userSelector);
-  console.log(isLogin);
 
   const location = useLocation();
 

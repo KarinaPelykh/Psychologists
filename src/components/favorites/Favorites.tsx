@@ -6,7 +6,7 @@ export const Favorites = () => {
   const { favorite } = useFavorite();
 
   return (
-    <>
+    <section className="  min-h-screen ">
       {favorite.length !== 0 ? (
         <ul>
           {favorite?.map((item, index) => (
@@ -16,6 +16,6 @@ export const Favorites = () => {
       ) : (
         <Loader />
       )}
-    </>
+    </section>
   );
 };

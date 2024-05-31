@@ -71,8 +71,8 @@ export const ModalWindow = ({ isOpen, item, toggle }: Prop) => {
 left-[0px] bg-[#191a1580] w-[100%] h-[100%] flex justify-center items-center"
         >
           <div
-            className=" hidden-[auto]  bg-[#FBFBFB] px-[64px] py-[10px] w-[600px] max-h-[700px] 
-             rounded-[30px] relative"
+            className=" hidden-[auto]  bg-[#FBFBFB] px-[64px] py-[80px] tablet:py-[10px] w-[100vh] h-[100vh] tablet:w-[600px] tablet:max-h-[700px] 
+             tablet:rounded-[30px] relative"
           >
             <button
               className="absolute top-[15px] right-[15px]"
@@ -82,11 +82,11 @@ left-[0px] bg-[#191a1580] w-[100%] h-[100%] flex justify-center items-center"
                 <use xlinkHref={icon + "#close"}></use>
               </svg>
             </button>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <h1 className=" text-[40px] font-medium tracking-[0.02rem] leading-[1.2] mb-[15px] ">
+            <form className="mobil:h-[100vh]" onSubmit={handleSubmit(onSubmit)}>
+              <h1 className="text-[35px]  text-center desktop:text-start desktop:text-[40px] font-medium tracking-[0.02rem] leading-[1.2] mb-[15px] ">
                 Make an appointment with a psychologists
               </h1>
-              <p className="w-[444px] text-start font-normal text-base leading-[1.25] text-[#191a158a] mb-[30px]">
+              <p className="desktop:w-[444px] text-start font-normal text-base leading-[1.25] text-[#191a158a] mb-[30px]">
                 You are on the verge of changing your life for the better. Fill
                 out the short form below to book your personal appointment with
                 a professional psychologist. We guarantee confidentiality and
@@ -136,12 +136,12 @@ left-[0px] bg-[#191a1580] w-[100%] h-[100%] flex justify-center items-center"
               />
               <textarea
                 placeholder="Comment"
-                className="outline-0 w-[472px]  resize-none  py-[16px] px-[18px] border rounded-[12px] placeholder:text-[#000] mb-[18px]"
+                className="outline-0  w-[100%] desktop:w-[472px]  resize-none  py-[16px] px-[18px] border rounded-[12px] placeholder:text-[#000] mb-[18px]"
               ></textarea>
               <Button
                 iconShow={false}
                 prop="Send"
-                className="w-[100%] flex justify-center"
+                className="w-[100%] flex justify-center mobil:flex"
                 onClick={toggle}
               />
             </form>

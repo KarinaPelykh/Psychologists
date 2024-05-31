@@ -40,12 +40,12 @@ export const Description = ({ item, index }: Item) => {
   };
 
   return (
-    <div className=" tablet:flex">
-      <p className="text-[#8A8A89] mobil:flex mobil:justify-center mobil:my-[10px] ">
+    <div className="tablet:flex tablet:items-center tablet:mb-[8px]">
+      <p className="text-[#8A8A89] mobil:flex mobil:justify-center  ">
         Psychologist
       </p>
-      <div className="flex  ml-[auto] relative">
-        <svg className="w-[16px] h-[16px]  absolute top-[15px] left-[-25px]  tablet:top-[5px] tablet:left-[-20px]">
+      <div className="flex  ml-[auto] relative tablet:items-center">
+        <svg className="w-[16px] h-[16px]  absolute top-[26px] left-[40px]  tablet:top-[5px] tablet:left-[-20px]">
           <use xlinkHref={icon + "#icon-star"}></use>
         </svg>
         <p className="font-medium">Rating {item.rating}</p>

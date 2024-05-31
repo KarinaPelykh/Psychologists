@@ -18,7 +18,7 @@ export const ReviewList = ({ item }: Item) => {
   return (
     <>
       {visible ? (
-        <ul>
+        <ul className="mt-[20px]">
           {item.reviews?.map(
             ({ reviewer, comment, rating }: Reviews, index: number) => (
               <ReviewItem
@@ -32,12 +32,15 @@ export const ReviewList = ({ item }: Item) => {
           <Button
             iconShow={false}
             prop="Make an appointment"
-            className="mt-[40px]"
+            className="mt-[40px] mobil:flex  mobil:text-[12px]  mobil:px-[10px]  mobil:!py-[10px]  mobil:mx-[auto] desktop:text-[16px] desktop:px-[32px] desktop:py-[14px] desktop:mx-[0]"
             onClick={toggle}
           />
         </ul>
       ) : (
-        <button onClick={handelVisible} className=" text-[#000] underline">
+        <button
+          onClick={handelVisible}
+          className=" text-[#000] underline mt-[14px]"
+        >
           Read more
         </button>
       )}

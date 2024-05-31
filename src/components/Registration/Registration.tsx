@@ -50,7 +50,7 @@ export const Registration = ({ toggle }: Prop) => {
   };
 
   return (
-    <div className="bg-[#FBFBFB] p-[64px] w-[566px] h-[580px]  rounded-[30px] relative">
+    <div className="bg-[#FBFBFB] p-[30px] desktop:p-[64px]  w-[100vh] h-[100vh] tablet:w-[566px] tablet:h-[580px]  tablet:rounded-[30px] relative">
       <button className="absolute top-[15px] right-[15px]" onClick={toggle}>
         <svg className="w-[32px] h-[32px]  stroke-black">
           <use xlinkHref={icon + "#close"}></use>
@@ -60,7 +60,7 @@ export const Registration = ({ toggle }: Prop) => {
         <h1 className=" text-[40px] font-medium tracking-[0.02rem] leading-[1.2] mb-[20px]">
           Registration
         </h1>
-        <p className="w-[408px] font-normal text-base leading-[1.25] text-[#191a158a] mb-[40px]">
+        <p className="desktop:w-[408px] font-normal text-base leading-[1.25] text-[#191a158a] mb-[40px]">
           Thank you for your interest in our platform! In order to register, we
           need some information. Please provide us with the following
           information.
@@ -110,7 +110,7 @@ export const Registration = ({ toggle }: Prop) => {
         <Button
           iconShow={false}
           prop="Sign Up"
-          className=" !w-[100%] !bg-[#FC832C] flex justify-center !h-[52px] rounded-[30px] items-center"
+          className=" !w-[100%] !bg-[#FC832C] flex justify-center !h-[52px] rounded-[30px] items-center mobil:flex"
         />
       </form>
     </div>

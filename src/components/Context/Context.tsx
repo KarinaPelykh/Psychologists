@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Psychology } from "../../type/Psycholog";
 interface Prop {
   children: React.ReactElement;
@@ -15,14 +15,19 @@ export const FavoriteContext = createContext<FavoriteContextType | undefined>(
 );
 
 export const FavoriteProvider = ({ children }: Prop) => {
-  const handelSaveData = () => {
+  const getSavedFavorites = () => {
     const savedFavorite = localStorage.getItem("favorite");
     return savedFavorite ? JSON.parse(savedFavorite) : [];
   };
+
   const [favorite, setFavorite] = useState<Psychology[]>(() =>
-    handelSaveData()
+    getSavedFavorites()
   );
   const [visible, setVisible] = useState<number | null>(null);
+
+  useEffect(() => {
+    localStorage.setItem("favorite", JSON.stringify(favorite));
+  }, [favorite]);
 
   const addFavorite = (item: Psychology, index: number) => {
     setFavorite((prev) => {

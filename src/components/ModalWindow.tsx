@@ -83,10 +83,10 @@ left-[0px] bg-[#191a1580] w-[100%] h-[100%] flex justify-center items-center"
               </svg>
             </button>
             <form className="mobil:h-[100vh]" onSubmit={handleSubmit(onSubmit)}>
-              <h1 className="text-[35px]  text-center desktop:text-start desktop:text-[40px] font-medium tracking-[0.02rem] leading-[1.2] mb-[15px] ">
+              <h1 className=" mobil:text-[20px] tablet:text-[35px]  text-center desktop:text-start desktop:text-[40px] font-medium tracking-[0.02rem] leading-[1.2] mb-[15px] ">
                 Make an appointment with a psychologists
               </h1>
-              <p className="desktop:w-[444px] text-start font-normal text-base leading-[1.25] text-[#191a158a] mb-[30px]">
+              <p className="mobil:hidden  tablet:flex tablet:text-[12px] desktop:w-[444px] text-start font-normal text-base leading-[1.25] text-[#191a158a] mb-[30px]">
                 You are on the verge of changing your life for the better. Fill
                 out the short form below to book your personal appointment with
                 a professional psychologist. We guarantee confidentiality and

@@ -13,6 +13,7 @@ interface Item {
 }
 export const ItemList = ({ item, index }: Item) => {
   const [open, setOpen] = useState(true);
+
   return (
     <li className="  p-[24px] bg-[#FBFBFB] rounded-[24px] mt-[32px] last:mb-[64px] desktop:flex">
       <div className="p-[12px] border border-[#fc832c96] w-[120px] h-[120px] rounded-[15px] relative mobil:flex mobil:mx-[auto] tablet:mx-[0px] tablet:block">

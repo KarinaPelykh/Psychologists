@@ -4,25 +4,26 @@ import {
   createRoutesFromElements,
 } from "react-router-dom";
 import { Layout } from "./components/Header/Layout";
-import { Home } from "./components/Home/Home";
 import { PsychologyPage } from "./page/Psychology";
 import { PrivatePage } from "./hoc/PrivatePage";
-import { Favorites } from "./components/favorites/Favorites";
+import { Favorite } from "./page/Favorite";
+import { HomePage } from "./page/HomePage";
+import { Error } from "./components/Error";
 
 export const routes = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
-      <Route index element={<Home />} />
+      <Route index element={<HomePage />} />
       <Route path="psychologists" element={<PsychologyPage />} />
       <Route
         path="favorites"
         element={
           <PrivatePage>
-            <Favorites />
+            <Favorite />
           </PrivatePage>
         }
       />
-      <Route path="*" element={<h1>NOT</h1>} />
+      <Route path="*" element={<Error />} />
     </Route>
   )
 );

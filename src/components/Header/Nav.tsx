@@ -15,7 +15,6 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 export const Nav = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
-  console.log(isOpenMenu);
 
   const { isOpen, open, toggle } = useToggle();
   const dispatch = useAppDispatch();

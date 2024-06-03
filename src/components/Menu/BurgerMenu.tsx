@@ -27,8 +27,8 @@ export const BurgerMenu = ({ isOpenMenu, toggleMenu }: Prop) => {
       <div
         className={clsx(
           isOpenMenu
-            ? "translate-x-full transition duration-250 ease-linear"
-            : "translate-x-0  transition duration-250	ease-linear",
+            ? "translate-x-0  transition duration-250	ease-linear"
+            : "translate-x-full transition duration-250 ease-linear",
           "w-[100vw] h-[100vh] fixed top-0 left-0  z-40"
         )}
       >

@@ -27,7 +27,7 @@ The private "Favorites" page with psychologists added by the user to their favor
 # Adaptation
 
 <div className="flex">
-<img src="./src/images/mobil.png" alt="screen"/>
-<img src="./src/images/tablet.png" alt="screen"/>
-<img src="./src/images/desktop.png" alt="screen"/>
+<img className="w-[200] h-[auto]" src="./src/images/mobil.png" alt="screen"/>
+<img  className="w-[200] h-[auto]"src="./src/images/tablet.png" alt="screen"/>
+<img  className="w-[200] h-[auto]"src="./src/images/desktop.png" alt="screen"/>
 </div>

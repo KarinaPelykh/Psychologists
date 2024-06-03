@@ -46,14 +46,16 @@ export const List = () => {
               <ItemList key={index} item={item} index={index} />
             ))}
           </ul>
-          <Button
-            iconShow={false}
-            prop="Load more"
-            className="mx-[auto] mb-[100px] mobil:flex"
-            onClick={() => {
-              setLimit(limit + 3);
-            }}
-          />
+          {info.length < sortedData.length && (
+            <Button
+              iconShow={false}
+              prop="Load more"
+              className="mx-[auto] mb-[100px] mobil:flex"
+              onClick={() => {
+                setLimit(limit + 3);
+              }}
+            />
+          )}
         </>
       )}
     </div>

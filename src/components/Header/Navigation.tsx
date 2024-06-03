@@ -17,9 +17,17 @@ export const Navigation = ({ className }: Prop) => {
   const isLoggedIn = loggedInUser && loggedInUser.name !== "";
   const visibleRoutes = isLoggedIn ? routes : routes.slice(0, 2);
   return (
-    <ul className={clsx(className, "hidden tablet:flex")}>
+    <ul
+      className={clsx(
+        className,
+        "mobil:items-start tablet:flex  tablet:items-center"
+      )}
+    >
       {visibleRoutes.map(({ path, name, id }) => (
-        <li key={id} className="mr-[40px] relative">
+        <li
+          key={id}
+          className="mr-[40px] relative  mobil:mb-[15px] tablet:mb-[0px]"
+        >
           <NavLink
             className={({ isActive }) =>
               clsx(

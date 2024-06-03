@@ -1,12 +1,12 @@
+import { Link } from "react-router-dom";
 import { useFavorite } from "../../hooks/useContext";
 import { ItemList } from "../List/ItemList";
-import { Loader } from "../Loader/Loader";
 
 export const Favorites = () => {
   const { favorite } = useFavorite();
 
   return (
-    <section className="  min-h-screen ">
+    <section className="  min-h-screen flex">
       {favorite.length !== 0 ? (
         <ul>
           {favorite?.map((item, index) => (
@@ -14,7 +14,15 @@ export const Favorites = () => {
           ))}
         </ul>
       ) : (
-        <Loader />
+        <p className="text-[23px] text-[#000]  m-[auto]">
+          List is empty. You &ensp;
+          <Link to="/psychologists" className="underline italic">
+            can add
+          </Link>
+          &ensp; your&ensp;
+          <span className="italic text-[23px] text-[#FC832C]"> favorite </span>
+          &ensp;psycholog
+        </p>
       )}
     </section>
   );

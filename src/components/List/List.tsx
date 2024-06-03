@@ -36,21 +36,26 @@ export const List = () => {
 
   return (
     <div className="mt-[20px] desktop:mt-[64px] min-h-screen">
-      {info.length === 0 && <Loader />}
-      <Filter option={option} handelValue={handelValue} />
-      <ul>
-        {info?.map((item: Psychology, index: number) => (
-          <ItemList key={index} item={item} index={index} />
-        ))}
-      </ul>
-      <Button
-        iconShow={false}
-        prop="Load more"
-        className="mx-[auto] mb-[100px] mobil:flex"
-        onClick={() => {
-          setLimit(limit + 3);
-        }}
-      />
+      {info.length === 0 ? (
+        <Loader />
+      ) : (
+        <>
+          <Filter option={option} handelValue={handelValue} />
+          <ul>
+            {info?.map((item: Psychology, index: number) => (
+              <ItemList key={index} item={item} index={index} />
+            ))}
+          </ul>
+          <Button
+            iconShow={false}
+            prop="Load more"
+            className="mx-[auto] mb-[100px] mobil:flex"
+            onClick={() => {
+              setLimit(limit + 3);
+            }}
+          />
+        </>
+      )}
     </div>
   );
 };

@@ -10,7 +10,7 @@ import { Navigation } from "./Navigation";
 import { userSelector } from "../../redux/Auth/AuthSelector";
 import { LogOut } from "../../redux/Auth/AuthOperation";
 import { useState } from "react";
-
+import icon from "../../images/sprite.svg";
 export const Nav = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   console.log(isOpenMenu);
@@ -28,28 +28,31 @@ export const Nav = () => {
   return (
     <nav className="flex items-center justify-center  tablet:justify-start  ">
       <Logo />
-      <Navigation />
-      {IsUser?.name ? (
+      <Navigation className="md:hidden" />
+      {IsUser && IsUser.name !== "" ? (
         <>
           <UserBar />
           <Button
             iconShow={false}
             prop="Log out"
-            className="bg-[transparent] border !border-[#191a159e] rounded-[30px] !px-[39px] !py-[14px]  mr-[8px] !text-[#000] !h-[48px] !text-[16px] flex items-center"
+            className="bg-[transparent] border !border-[#191a159e] rounded-[30px] !px-[39px] !py-[14px]  mr-[8px] !text-[#000] !h-[48px] !text-[16px] flex items-center tablet:flex "
             onClick={logOut}
           />
         </>
       ) : (
-        <AuthNav isOpen={isOpen} open={open} toggle={toggle} />
+        <AuthNav
+          isOpen={isOpen}
+          open={open}
+          toggle={toggle}
+          className="tablet:flex "
+        />
       )}
-      <button className="tablet:hidden" onClick={toggleMenu}>
-        Menu
+      <button className="  mdMin:hidden" onClick={toggleMenu}>
+        <svg className="w-[24px] h-[24px] stroke-[#000] ml-[20px] ">
+          <use xlinkHref={icon + "#menu"}></use>
+        </svg>
       </button>
-      <BurgerMenu
-        isOpenMenu={isOpenMenu}
-        toggleMenu={toggleMenu}
-        className="tablet:hidden"
-      />
+      <BurgerMenu isOpenMenu={isOpenMenu} toggleMenu={toggleMenu} />
     </nav>
   );
 };

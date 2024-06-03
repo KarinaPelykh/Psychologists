@@ -15,7 +15,7 @@ export const handelSorted = (psychology: Psychology[], option: string) => {
       return copyPsychology.filter(({ rating }) => rating >= 4.8);
     case "Less than 10$":
       return copyPsychology.filter(
-        ({ price_per_hour }) => price_per_hour <= 10
+        ({ price_per_hour }) => price_per_hour <= 150
       );
     case "Greater than 10$":
       return copyPsychology.filter(

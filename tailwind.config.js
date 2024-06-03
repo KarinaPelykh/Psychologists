@@ -5,6 +5,8 @@ export default {
     screens: {
       mobil: "320px",
       tablet: "768px",
+      md: { max: "871px" },
+      mdMin: "871px",
       desktop: "1280px",
     },
     extend: {},

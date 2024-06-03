@@ -8,7 +8,8 @@ import { useAppDispatch } from "../../hooks/useDispatch";
 import { registerThunk } from "../../redux/Auth/AuthOperation";
 import { User } from "../../type/Auth";
 import { useNavigate } from "react-router-dom";
-
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 type Prop = {
   toggle: () => void;
 };
@@ -44,14 +45,23 @@ export const Registration = ({ toggle }: Prop) => {
   const onSubmit = ({ name, email, password }: User) => {
     dispatch(registerThunk({ name, email, password }))
       .unwrap()
-      .then(() => navigate("/psychologists"));
+      .then(() => {
+        navigate("/psychologists");
+        toast.success("You already registration");
+      })
+      .catch((error) => {
+        toast.error(`You have ${error.message}`);
+      });
     reset();
     toggle();
   };
 
   return (
     <div className="bg-[#FBFBFB] p-[30px] desktop:p-[64px]  w-[100vh] h-[100vh] tablet:w-[566px] tablet:h-[580px]  tablet:rounded-[30px] relative">
-      <button className="absolute top-[15px] right-[15px]" onClick={toggle}>
+      <button
+        className="absolute mobil:top-[30px] mobil:right-[20px] tablet:top-[15px] tablet:right-[15px]"
+        onClick={toggle}
+      >
         <svg className="w-[32px] h-[32px]  stroke-black">
           <use xlinkHref={icon + "#close"}></use>
         </svg>

@@ -8,6 +8,8 @@ import { useAppDispatch } from "../../hooks/useDispatch";
 import { useNavigate } from "react-router-dom";
 import { UserLogin } from "../../type/Auth";
 import { loginThunk } from "../../redux/Auth/AuthOperation";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 type Prop = {
   toggle: () => void;
 };
@@ -38,7 +40,14 @@ export const LogIn = ({ toggle }: Prop) => {
   const onSubmit = ({ email, password }: UserLogin) => {
     dispatch(loginThunk({ email, password }))
       .unwrap()
-      .then(() => navigate("/psychologists"));
+      .then(() => {
+        navigate("/psychologists");
+        toast.success("You already registration ");
+      })
+      .catch((error) => {
+        toast.error(`You ${error.message}`);
+      });
+
     reset();
     toggle();
   };
@@ -48,7 +57,10 @@ export const LogIn = ({ toggle }: Prop) => {
   };
   return (
     <div className="bg-[#FBFBFB] p-[64px] w-[100vh] h-[100vh] tablet:w-[566px] tablet:h-[510px]  tablet:rounded-[30px] relative">
-      <button className="absolute top-[15px] right-[15px]" onClick={toggle}>
+      <button
+        className="absolute mobil:top-[30px] mobil:right-[25px] tablet:top-[15px] tablet:right-[15px]"
+        onClick={toggle}
+      >
         <svg className="w-[32px] h-[32px]  stroke-black">
           <use xlinkHref={icon + "#close"}></use>
         </svg>

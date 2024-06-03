@@ -24,4 +24,10 @@ The private "Favorites" page with psychologists added by the user to their favor
 "redux-persist": "^6.0.0",
 "yup": "^1.4.0"
 
-#
+# Adaptation
+
+<div className="flex">
+<img src="./src/images/mobil.png" alt="screen"/>
+<img src="./src/images/tablet.png" alt="screen"/>
+<img src="./src/images/desktop.png" alt="screen"/>
+</div>

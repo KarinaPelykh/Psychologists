@@ -11,6 +11,8 @@ import { userSelector } from "../../redux/Auth/AuthSelector";
 import { LogOut } from "../../redux/Auth/AuthOperation";
 import { useState } from "react";
 import icon from "../../images/sprite.svg";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export const Nav = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false);
   console.log(isOpenMenu);
@@ -19,7 +21,14 @@ export const Nav = () => {
   const dispatch = useAppDispatch();
   const IsUser = useSelector(userSelector);
   const logOut = () => {
-    dispatch(LogOut());
+    dispatch(LogOut())
+      .unwrap()
+      .then(() => {
+        toast.success("You log out success");
+      })
+      .catch((error) => {
+        toast.error(`You have ${error}`);
+      });
   };
 
   const toggleMenu = () => {

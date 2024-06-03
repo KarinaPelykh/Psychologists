@@ -1,7 +1,12 @@
+import { useNavigate } from "react-router-dom";
 import psychology from "../../images/psycholog.jpg";
 import icon from "../../images/sprite.svg";
 import { Button } from "../Button/Button";
 export const Home = () => {
+  const navigate = useNavigate();
+  const handelNavigate = () => {
+    navigate("/psychologists");
+  };
   return (
     <section
       className="min-w-fit
@@ -16,7 +21,7 @@ export const Home = () => {
           We help you to reveal your potential, overcome challenges and find a
           guide in your own life with the help of our experienced psychologists.
         </p>
-        <Button prop="Get started" className="w-fit" />
+        <Button prop="Get started" className="w-fit" onClick={handelNavigate} />
       </div>
       <div className="relative  mobil:w-[280px] tablet:w-[464px]   tablet:flex tablet:mx-[auto] tablet:flex-col  desktop:mx-[0]  desktop:pt-[78px] desktop:h-[526px]">
         <div className="rounded-[10px] w-[40px] h-[40px] bg-[#54BE96]  flex justify-center absolute top-[0px]left-[0px] tablet:top-[250px] tablet:left-[35px] rotate-[80deg]">

@@ -26,7 +26,7 @@ export const Navigation = ({ className }: Prop) => {
       {visibleRoutes.map(({ path, name, id }) => (
         <li
           key={id}
-          className="mr-[40px] relative  mobil:mb-[15px] tablet:mb-[0px]"
+          className="mr-[40px] relative  mobil:mb-[15px] mdMin:mb-[0px]"
         >
           <NavLink
             className={({ isActive }) =>

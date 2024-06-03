@@ -6,9 +6,9 @@ import {
 import { Layout } from "./components/Header/Layout";
 import { PsychologyPage } from "./page/Psychology";
 import { PrivatePage } from "./hoc/PrivatePage";
-import { Favorite } from "./page/Favorite";
 import { HomePage } from "./page/HomePage";
 import { Error } from "./components/Error";
+import { Favorite } from "./page/Favorite";
 
 export const routes = createBrowserRouter(
   createRoutesFromElements(

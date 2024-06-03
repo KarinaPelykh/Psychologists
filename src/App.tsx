@@ -8,7 +8,7 @@ import { PsychologyPage } from "./page/Psychology";
 import { PrivatePage } from "./hoc/PrivatePage";
 import { HomePage } from "./page/HomePage";
 import { Error } from "./components/Error";
-import { Favorites } from "./components/Favorites/Favorites";
+import { Favorites } from "./components/favorites/Favorites";
 
 export const routes = createBrowserRouter(
   createRoutesFromElements(

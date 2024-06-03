@@ -8,7 +8,7 @@ import { PsychologyPage } from "./page/Psychology";
 import { PrivatePage } from "./hoc/PrivatePage";
 import { HomePage } from "./page/HomePage";
 import { Error } from "./components/Error";
-import { Favorite } from "./page/Favorite";
+import { Favorites } from "./components/Favorites/Favorites";
 
 export const routes = createBrowserRouter(
   createRoutesFromElements(
@@ -19,7 +19,7 @@ export const routes = createBrowserRouter(
         path="favorites"
         element={
           <PrivatePage>
-            <Favorite />
+            <Favorites />
           </PrivatePage>
         }
       />
